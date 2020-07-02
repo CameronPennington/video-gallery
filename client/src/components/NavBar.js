@@ -196,7 +196,7 @@ export const NavBar = (props) => {
 								to="/"
 							>
 								<Typography variant="h3" className={classes.navLinkText}>
-									Docufy
+									CHGJJ
 								</Typography>
 							</NavLink>
 						</Grid>
