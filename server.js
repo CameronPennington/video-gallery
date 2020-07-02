@@ -7,7 +7,7 @@ const enforce = require("express-sslify");
 const path = require("path");
 
 //create db connection
-// const db = require("./config/keys").mongoURI;
+const db = require("./config/keys").mongoURI;
 
 //require routes
 const auth = require("./routes/auth");
@@ -19,14 +19,14 @@ app.use("/auth", auth);
 
 app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
-// mongoose
-// 	.connect(db, {
-// 		useNewUrlParser: true,
-// 		useFindAndModify: false,
-// 		useUnifiedTopology: true,
-// 	})
-// 	.then(() => console.log("MongoDB Connected"))
-// 	.catch((err) => console.log(err));
+mongoose
+	.connect(db, {
+		useNewUrlParser: true,
+		useFindAndModify: false,
+		useUnifiedTopology: true,
+	})
+	.then(() => console.log("MongoDB Connected"))
+	.catch((err) => console.log(err));
 
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));

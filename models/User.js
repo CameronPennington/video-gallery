@@ -22,15 +22,6 @@ const UserSchema = new Schema({
 		type: String,
 		required: true,
 	},
-	organization: {
-		type: Schema.Types.ObjectId,
-		ref: "organization",
-		required: true,
-	},
-	admin: {
-		type: Boolean,
-		default: false,
-	},
 });
 
 module.exports = User = mongoose.model("user", UserSchema);
