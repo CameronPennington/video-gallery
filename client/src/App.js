@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import ReactTimeout from "react-timeout";
 import store from "./store";
-import Login from "./components/Login";
+import Gallery from "./components/Gallery";
 import Landing from "./components/Landing";
+import Login from "./components/Login";
 import NavBar from "./components/NavBar";
 
 import jwt_decode from "jwt-decode";
@@ -31,6 +32,7 @@ function App(props) {
 					<NavBar />
 					<Route exact path="/" component={Landing} />
 					<Route exact path="/login" component={Login} />
+					<Route exact path="/videos" component={Gallery} />
 				</div>
 			</Router>
 		</Provider>

@@ -62,7 +62,7 @@ export const Register = (props) => {
 	//redirect to dashboard once logged in
 
 	if (isAuthenticated) {
-		return <Redirect to={`/dashboard/${properties.organization}`} />;
+		return <Redirect to={"/videos"} />;
 	}
 
 	const onChange = (event) => {
