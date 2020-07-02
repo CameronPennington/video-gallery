@@ -6,6 +6,10 @@ const VideoSchema = new Schema({
 		type: String,
 		required: true,
 	},
+	tags: [String],
+	title: {
+		type: String,
+	},
 });
 
 module.exports = Video = mongoose.model("video", VideoSchema);

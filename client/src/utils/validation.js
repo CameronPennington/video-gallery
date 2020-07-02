@@ -8,14 +8,7 @@ const passwordsMatch = (password, password2) => {
 };
 
 export function validateRegisterData(formData) {
-	const {
-		firstName,
-		lastName,
-		email,
-		organization,
-		password,
-		password2,
-	} = formData;
+	const { firstName, lastName, email, password, password2 } = formData;
 	let errors = {};
 
 	if (
@@ -38,9 +31,6 @@ export function validateRegisterData(formData) {
 	}
 	if (email.length === 0) {
 		errors.email = "Email is required";
-	}
-	if (organization.length === 0) {
-		errors.organization = "Organization is required";
 	}
 	if (password.length === 0) {
 		errors.password = "Password is required";

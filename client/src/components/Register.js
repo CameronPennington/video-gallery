@@ -54,9 +54,6 @@ export const Register = (props) => {
 	const [email, setEmail] = useState("");
 	const [emailHelper, setEmailHelper] = useState("");
 
-	const [organization, setOrganization] = useState("");
-	const [organizationHelper, setOrganizationHelper] = useState("");
-
 	const [password, setPassword] = useState("");
 	const [passwordHelper, setPasswordHelper] = useState("");
 
@@ -83,10 +80,7 @@ export const Register = (props) => {
 				setEmailHelper("");
 				setEmail(value);
 				break;
-			case "organization":
-				setOrganizationHelper("");
-				setOrganization(value);
-				break;
+
 			case "password":
 				setPasswordHelper("");
 				setPassword(value);
@@ -106,7 +100,6 @@ export const Register = (props) => {
 			firstName,
 			lastName,
 			email,
-			organization,
 			password,
 			password2,
 		};
@@ -115,7 +108,7 @@ export const Register = (props) => {
 		errors.firstName && setFirstNameHelper(errors.firstName);
 		errors.lastName && setLastNameHelper(errors.lastName);
 		errors.email && setEmailHelper(errors.email);
-		errors.organization && setOrganizationHelper(errors.organization);
+
 		errors.password && setPasswordHelper(errors.password);
 		errors.password2 && setPassword2Helper(errors.password2);
 
@@ -239,21 +232,7 @@ export const Register = (props) => {
 								inputProps={{ maxlength: 30 }}
 							/>
 						</Grid>
-						<Grid item xs={12}>
-							<TextField
-								variant="outlined"
-								required
-								fullWidth
-								id="organization"
-								label="Organization Name"
-								name="organization"
-								onChange={onChange}
-								value={organization}
-								error={organizationHelper.length > 0}
-								helperText={organizationHelper}
-								inputProps={{ maxlength: 40 }}
-							/>
-						</Grid>
+
 						<Grid item xs={12}>
 							<TextField
 								variant="outlined"
