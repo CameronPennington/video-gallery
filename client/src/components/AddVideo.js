@@ -37,13 +37,16 @@ export const AddVideo = (props) => {
 
 	const onChange = (e) => {};
 	const handleCheck = (e) => {
-		console.log(e.target.name);
-		setTag(e.target.name);
+		e.target.checked ? setTag(e.target.name) : setTag("");
+	};
+	const handleJJCheck = (e) => {
+		e.target.checked ? setJJTag(e.target.name) : setJJTag("");
 	};
 	const handleSubmit = () => {};
 
 	const [tag, setTag] = useState("");
-
+	const [jjTag, setJJTag] = useState("");
+	//Refactor: change from array of strings to object with boolean values, like on Material UI checkbox page
 	const tags = ["Jiu Jitsu", "Train for Life"];
 	const jjTags = ["Youth", "Fundamentals", "Intermediate", "Advanced"];
 
@@ -106,6 +109,24 @@ export const AddVideo = (props) => {
 								/>
 							);
 						})}
+						{tag.length > 0 && "Jiu Jitsu".localeCompare(tag) == 0 && (
+							<div>
+								{jjTags.map((x, i) => {
+									return (
+										<FormControlLabel
+											control={
+												<Checkbox
+													name={x}
+													checked={x.localeCompare(jjTag) === 0}
+													onChange={handleJJCheck}
+												></Checkbox>
+											}
+											label={x}
+										/>
+									);
+								})}
+							</div>
+						)}
 						<ErrorSnackbar errors={props.errors} />
 					</form>
 				</div>
