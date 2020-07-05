@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import ReactTimeout from "react-timeout";
 import store from "./store";
+import AddVideo from "./components/AddVideo";
 import Gallery from "./components/Gallery";
 import Landing from "./components/Landing";
 import Login from "./components/Login";
@@ -33,6 +34,7 @@ function App(props) {
 					<Route exact path="/" component={Landing} />
 					<Route exact path="/login" component={Login} />
 					<Route exact path="/videos" component={Gallery} />
+					<Route exact path="/upload" component={AddVideo} />
 				</div>
 			</Router>
 		</Provider>
