@@ -1,9 +1,9 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
+import Button from "@material-ui/core/Buttons";
 import Container from "@material-ui/core/Container";
-import ErrorSnackbar from "./ErrorSnackbar";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import ErrorSnackbar from "./ErrorSnackbar";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
@@ -33,9 +33,6 @@ const useStyles = makeStyles((theme) => ({
 export const AddVideo = (props) => {
 	const classes = useStyles();
 
-	const onChange = (event) => {};
-	const handleSubmit = () => {};
-
 	return (
 		<>
 			<Container component="main" maxWidth="xs">
@@ -45,7 +42,7 @@ export const AddVideo = (props) => {
 						<LockOutlinedIcon />
 					</Avatar> */}
 					<Typography component="h1" variant="h5">
-						Sign up
+						Add Video
 					</Typography>
 					<form
 						className={classes.form}
@@ -56,12 +53,12 @@ export const AddVideo = (props) => {
 						<Grid container spacing={2}>
 							<Grid item xs={12} sm={6}>
 								<TextField
-									name="URL"
+									name="url"
 									variant="outlined"
 									required
 									fullWidth
-									id="url"
-									label="Video URL"
+									id="videoUrl"
+									label="URL"
 									autoFocus
 									onChange={onChange}
 									// value={firstName}
