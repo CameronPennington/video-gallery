@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -34,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const AddVideo = (props) => {
 	const classes = useStyles();
-
+	const { isAuthenticated, properties } = props.user;
 	const onChange = (e) => {};
 	const handleCheck = (e) => {
 		if (e.target.checked) {
@@ -159,4 +161,9 @@ export const AddVideo = (props) => {
 	);
 };
 
-export default AddVideo;
+const mapStateToProps = (state) => ({
+	user: state.user,
+	errors: state.errors,
+});
+
+export default connect(mapStateToProps)(AddVideo);
