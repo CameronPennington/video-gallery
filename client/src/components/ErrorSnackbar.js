@@ -9,11 +9,11 @@ import { setErrors } from "../actions/error";
 const ErrorSnackbar = (props) => {
 	const [open, setOpen] = useState(false);
 	const dispatch = useDispatch();
-	useEffect(() => {
-		if (Object.keys(props.errors).length > 0) {
-			setOpen(true);
-		}
-	}, [props.errors]);
+	// useEffect(() => {
+	// 	if (Object.keys(props.errors).length > 0) {
+	// 		setOpen(true);
+	// 	}
+	// }, [props.errors]);
 
 	const handleClose = (event, reason) => {
 		if (reason === "clickaway") {
@@ -34,7 +34,7 @@ const ErrorSnackbar = (props) => {
 				open={open}
 				autoHideDuration={5000}
 				onClose={handleClose}
-				message={props.errors.message}
+				// message={props.errors.message}
 				action={
 					<React.Fragment>
 						<IconButton

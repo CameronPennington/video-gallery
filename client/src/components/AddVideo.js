@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
+import Checkbox from "@material-ui/core/Checkbox";
 import Container from "@material-ui/core/Container";
-import ErrorSnackbar from "./ErrorSnackbar";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import ErrorSnackbar from "./ErrorSnackbar";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
@@ -33,8 +35,17 @@ const useStyles = makeStyles((theme) => ({
 export const AddVideo = (props) => {
 	const classes = useStyles();
 
-	const onChange = (event) => {};
+	const onChange = (e) => {};
+	const handleCheck = (e) => {
+		console.log(e.target.name);
+		setTag(e.target.name);
+	};
 	const handleSubmit = () => {};
+
+	const [tag, setTag] = useState("");
+
+	const tags = ["Jiu Jitsu", "Train for Life"];
+	const jjTags = ["Youth", "Fundamentals", "Intermediate", "Advanced"];
 
 	return (
 		<>
@@ -45,7 +56,7 @@ export const AddVideo = (props) => {
 						<LockOutlinedIcon />
 					</Avatar> */}
 					<Typography component="h1" variant="h5">
-						Sign up
+						Add Video
 					</Typography>
 					<form
 						className={classes.form}
@@ -54,7 +65,7 @@ export const AddVideo = (props) => {
 						id="form"
 					>
 						<Grid container spacing={2}>
-							<Grid item xs={12} sm={6}>
+							<Grid item xs={12} sm={12}>
 								<TextField
 									name="URL"
 									variant="outlined"
@@ -72,15 +83,29 @@ export const AddVideo = (props) => {
 							</Grid>
 						</Grid>
 						<Button
-							aria-label="Submit Registration"
+							aria-label="Upload Video"
 							type="submit"
 							fullWidth
 							variant="contained"
 							color="primary"
 							className={classes.submit}
 						>
-							Add Video
+							Upload
 						</Button>
+						{tags.map((x, i) => {
+							return (
+								<FormControlLabel
+									control={
+										<Checkbox
+											name={x}
+											checked={x.localeCompare(tag) === 0}
+											onChange={handleCheck}
+										></Checkbox>
+									}
+									label={x}
+								/>
+							);
+						})}
 						<ErrorSnackbar errors={props.errors} />
 					</form>
 				</div>
