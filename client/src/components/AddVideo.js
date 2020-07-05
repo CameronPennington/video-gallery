@@ -37,7 +37,12 @@ export const AddVideo = (props) => {
 
 	const onChange = (e) => {};
 	const handleCheck = (e) => {
-		e.target.checked ? setTag(e.target.name) : setTag("");
+		if (e.target.checked) {
+			setTag(e.target.name);
+		} else {
+			setTag("");
+			setJJTag("");
+		}
 	};
 	const handleJJCheck = (e) => {
 		e.target.checked ? setJJTag(e.target.name) : setJJTag("");
@@ -67,6 +72,25 @@ export const AddVideo = (props) => {
 						onSubmit={handleSubmit}
 						id="form"
 					>
+						{" "}
+						<Grid container spacing={2}>
+							<Grid item xs={12} sm={12}>
+								<TextField
+									name="title"
+									variant="outlined"
+									required
+									fullWidth
+									id="title"
+									label="Title"
+									autoFocus
+									onChange={onChange}
+									// value={firstName}
+									// error={firstNameHelper.length > 0}
+									// helperText={firstNameHelper}
+									// inputProps={{ maxlength: 10 }}
+								/>
+							</Grid>
+						</Grid>
 						<Grid container spacing={2}>
 							<Grid item xs={12} sm={12}>
 								<TextField
@@ -75,7 +99,7 @@ export const AddVideo = (props) => {
 									required
 									fullWidth
 									id="url"
-									label="Video URL"
+									label="URL"
 									autoFocus
 									onChange={onChange}
 									// value={firstName}
