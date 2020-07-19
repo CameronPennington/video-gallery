@@ -51,20 +51,31 @@ export const AddVideo = (props) => {
 	};
 	const handleSubmit = () => {};
 
-	const [tag, setTag] = useState("");
-	const [jjTag, setJJTag] = useState("");
+	const [tag, setTag] = useState({
+		jiuJitsu: { label: "Jiu Jitsu", value: false },
+		trainForLife: { label: "Train for Life", value: false },
+	});
+	const [jjTag, setJJTag] = useState({
+		youth: false,
+		fundamentals: false,
+		intermediate: false,
+		advanced: false,
+	});
+	const [jjContent, setJJContent] = useState({
+		sideControl: false,
+		guard: false,
+		mount: false,
+		turtle: false,
+	});
 	//Refactor: change from array of strings to object with boolean values, like on Material UI checkbox page
-	const tags = ["Jiu Jitsu", "Train for Life"];
-	const jjTags = ["Youth", "Fundamentals", "Intermediate", "Advanced"];
+	const tags = Object.entries(tag).sort();
+	// const jjTags = ["Youth", "Fundamentals", "Intermediate", "Advanced"];
 
 	return (
 		<>
 			<Container component="main" maxWidth="xs">
 				<CssBaseline />
 				<div className={classes.paper}>
-					{/* <Avatar className={classes.avatar}>
-						<LockOutlinedIcon />
-					</Avatar> */}
 					<Typography component="h1" variant="h5">
 						Add Video
 					</Typography>
@@ -126,16 +137,17 @@ export const AddVideo = (props) => {
 								<FormControlLabel
 									control={
 										<Checkbox
-											name={x}
-											checked={x.localeCompare(tag) === 0}
+											name={x[0]}
+											checked={tag[i]}
 											onChange={handleCheck}
 										></Checkbox>
 									}
-									label={x}
+									label={x[1].label}
 								/>
 							);
 						})}
-						{tag.length > 0 && "Jiu Jitsu".localeCompare(tag) == 0 && (
+						{}
+						{/* {tag.length > 0 && "Jiu Jitsu".localeCompare(tag) == 0 && (
 							<div>
 								{jjTags.map((x, i) => {
 									return (
@@ -152,7 +164,7 @@ export const AddVideo = (props) => {
 									);
 								})}
 							</div>
-						)}
+						)} */}
 						<ErrorSnackbar errors={props.errors} />
 					</form>
 				</div>
