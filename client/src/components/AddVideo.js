@@ -39,12 +39,7 @@ export const AddVideo = (props) => {
 	const { isAuthenticated, properties } = props.user;
 	const onChange = (e) => {};
 	const handleCheck = (e) => {
-		if (e.target.checked) {
-			setTag(e.target.name);
-		} else {
-			setTag("");
-			setJJTag("");
-		}
+		//custom reduce function necessary
 	};
 	const handleJJCheck = (e) => {
 		e.target.checked ? setJJTag(e.target.name) : setJJTag("");
