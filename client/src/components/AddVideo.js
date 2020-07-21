@@ -57,16 +57,16 @@ export const AddVideo = (props) => {
 		trainForLife: { label: "Train for Life", value: false },
 	});
 	const [jjTag, setJJTag] = useState({
-		youth: false,
-		fundamentals: false,
-		intermediate: false,
-		advanced: false,
+		youth: { label: "Youth", value: false },
+		fundamentals: { label: "Fundamentals", value: false },
+		intermediate: { label: "Intermediate", value: false },
+		advanced: { label: "Advanced", value: false },
 	});
 	const [jjContent, setJJContent] = useState({
-		sideControl: false,
-		guard: false,
-		mount: false,
-		turtle: false,
+		sideControl: { label: "Side Control", value: false },
+		guard: { label: "Guard", value: false },
+		mount: { label: "Mount", value: false },
+		turtle: { label: "Turtle", value: false },
 	});
 	//Refactor: change from array of strings to object with boolean values, like on Material UI checkbox page
 	const tags = Object.entries(tag).sort();
