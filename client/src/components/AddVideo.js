@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import Box from "@material-ui/core/Box";
@@ -44,8 +44,6 @@ export const AddVideo = (props) => {
 		const update = { [e.target.name]: { value: e.target.checked } };
 		const merged = _.merge(tag, update);
 		setTag(merged);
-
-		console.log(merged);
 	};
 	const handleJJCheck = (e) => {
 		e.target.checked ? setJJTag(e.target.name) : setJJTag("");
@@ -70,7 +68,7 @@ export const AddVideo = (props) => {
 	});
 	//Refactor: change from array of strings to object with boolean values, like on Material UI checkbox page
 	const tags = Object.entries(tag).sort();
-	// const jjTags = ["Youth", "Fundamentals", "Intermediate", "Advanced"];
+	const jjTags = Object.entries(jjTag).sort();
 
 	return (
 		<>
@@ -136,6 +134,7 @@ export const AddVideo = (props) => {
 						{tags.map((x, i) => {
 							return (
 								<FormControlLabel
+									key={x[0]}
 									control={
 										<Checkbox
 											name={x[0]}
@@ -147,25 +146,25 @@ export const AddVideo = (props) => {
 								/>
 							);
 						})}
-						{}
-						{/* {tag.length > 0 && "Jiu Jitsu".localeCompare(tag) == 0 && (
+						{tag.jiuJitsu.value == true && (
 							<div>
 								{jjTags.map((x, i) => {
 									return (
 										<FormControlLabel
+											key={x[0]}
 											control={
 												<Checkbox
 													name={x}
-													checked={x.localeCompare(jjTag) === 0}
+													// checked={x.localeCompare(jjTag) === 0}
 													onChange={handleJJCheck}
 												></Checkbox>
 											}
-											label={x}
+											label={x[1].label}
 										/>
 									);
 								})}
 							</div>
-						)} */}
+						)}
 						<ErrorSnackbar errors={props.errors} />
 					</form>
 				</div>
