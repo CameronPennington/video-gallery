@@ -14,6 +14,8 @@ import Typography from "@material-ui/core/Typography";
 
 import { makeStyles } from "@material-ui/core/styles";
 
+import _ from "lodash";
+
 const useStyles = makeStyles((theme) => ({
 	paper: {
 		marginTop: theme.spacing(8),
@@ -39,7 +41,11 @@ export const AddVideo = (props) => {
 	const { isAuthenticated, properties } = props.user;
 	const onChange = (e) => {};
 	const handleCheck = (e) => {
-		//custom reduce function necessary
+		const update = { [e.target.name]: { value: e.target.checked } };
+		const merged = _.merge(tag, update);
+		setTag(merged);
+
+		console.log(merged);
 	};
 	const handleJJCheck = (e) => {
 		e.target.checked ? setJJTag(e.target.name) : setJJTag("");
